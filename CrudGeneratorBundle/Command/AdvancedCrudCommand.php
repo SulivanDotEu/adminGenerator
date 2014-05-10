@@ -6,6 +6,8 @@
  * and open the template in the editor.
  */
 
+
+// je vais ajouter ce commentaire et le push sur github depuis un super repository
 namespace Walva\CrudGeneratorBundle\Command;
 
 use Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand;
