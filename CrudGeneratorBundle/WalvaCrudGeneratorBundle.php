@@ -1,5 +1,7 @@
 <?php
 
+
+// ahaha un nouveau com
 namespace Walva\CrudGeneratorBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
