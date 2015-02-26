@@ -1,64 +1,23 @@
+{% extends "skeleton/crud/views/index.html.twig.twig" %}
+
 {% block extends %}
-{{ "{% extends '::base.html.twig' %}" }}
+{{ "{% extends  'WalvaCrudAdminBundle:Crud:index.html.twig' %}" }}
 {% endblock extends %}
 
+
+
 {% block body %}
-{{ "{% block body -%}" }}
-    <h1>{{ entity }} list</h1>
-
-    <table class="records_list">
-        <thead>
-            <tr>
-            {%- for field, metadata in fields %}
-
-                <th>{{ field|capitalize }}</th>
-
-            {%- endfor %}
-
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {{ '{% for entity in entities %}' }}
-            <tr>
-
-        {%- for field, metadata in fields %}
-            {%- if loop.first and ('show' in actions) %}
-
-                <td><a href="{{ "{{ path('" ~ route_name_prefix ~ "_show', { 'id': entity.id }) }}" }}">{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</a></td>
-
-            {%- elseif metadata.type in ['date', 'datetime'] %}
-
-                <td>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}{{ entity.' ~ field|replace({'_': ''}) ~ '|date(\'Y-m-d H:i:s\') }}{% endif %}' }}</td>
-
-            {%- else %}
-
-                <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</td>
-
-            {%- endif %}
-
-            {%- if loop.last %}
-
-                <td>
-                    {%- include "crud/views/others/actions.html.twig.twig" %}
-                </td>
-
-            {%- endif %}
-        {%- endfor %}
-
-            </tr>
-        {{ '{% endfor %}' }}
-        </tbody>
-    </table>
-
-    {% if 'new' in actions %}
-    <ul>
-        <li>
-            <a href="{{ "{{ path('" ~ route_name_prefix ~ "_new') }}" }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endif %}
+    
+{{ "{% block crud_table_row_content %}" }}
+    <td><a href="{{ "{{ path(routeShow, { 'id': entity.id }) }}" }}">{{ "{{ entity.id }}" }}</a></td>
 {{ "{% endblock %}" }}
+
+
+{{ "{% block actions %}" }}
+<div class="btn-group">
+    <a href="{{ "{{ path(routeShow, { 'id': entity.id }) }}" }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-new-window"></span> Show</a>
+    <a href="{{ "{{ path(routeEdit, { 'id': entity.id }) }}" }}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+</div>
+{{ "{% endblock %}" }}
+
 {% endblock body %}

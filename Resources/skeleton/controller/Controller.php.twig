@@ -1,5 +1,7 @@
 <?php
 
+
+
 namespace {{ namespace }}\Controller;
 
 {% block use_statements %}
@@ -14,6 +16,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class {{ controller }}Controller extends Controller
 {% endblock class_definition %}
 {
+
+
+
 {% block class_body %}
 {% for action in actions %}
     {% if 'annotation' == format.routing -%}

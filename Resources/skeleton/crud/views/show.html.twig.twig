@@ -1,13 +1,12 @@
+{% extends "skeleton/crud/views/index.html.twig.twig" %}
+
 {% block extends %}
-{{ "{% extends '::base.html.twig' %}" }}
+{{ "{% extends  'WalvaCrudAdminBundle:Crud:show.html.twig' %}" }}
 {% endblock extends %}
 
 {% block body %}
-{{ "{% block body -%}" }}
-    <h1>{{ entity }}</h1>
+{{ "{% block crud_table_body -%}" }}
 
-    <table class="record_properties">
-        <tbody>
         {%- for field, metadata in fields %}
 
             <tr>
@@ -27,10 +26,5 @@
 
         {%- endfor %}
 
-        </tbody>
-    </table>
-
-    {% set hide_edit, hide_delete = false, false %}
-    {% include 'crud/views/others/record_actions.html.twig.twig' %}
 {{ "{% endblock %}" }}
 {% endblock body %}
